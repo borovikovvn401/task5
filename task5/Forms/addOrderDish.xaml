@@ -1,0 +1,20 @@
+﻿<Window x:Class="task5.Forms.addOrderDish"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:task5.Forms"
+        mc:Ignorable="d"
+        Title="addOrderDish" Height="350" Width="250"
+        Closed="Window_Closed">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center">
+            <TextBlock Text="{Binding OrderId}"></TextBlock>
+            <TextBlock HorizontalAlignment="Center">Выберите блюдо</TextBlock>
+            <ComboBox Name="cbDish" SelectedItem="{Binding Dish}" DisplayMemberPath="Name" SelectionChanged="cbDish_SelectionChanged"></ComboBox>
+            <TextBlock Margin="0,20,0,0" HorizontalAlignment="Center">Количество блюд</TextBlock>
+            <TextBox Width="50" Name="tbAmount" Text="{Binding Amount}" TextChanged="tbAmount_TextChanged"></TextBox>
+            <Button Width="80" Margin="0,20,0,0" Name="saveButton" Click="saveButton_Click">Добавить</Button>
+        </StackPanel>
+    </Grid>
+</Window>
