@@ -56,5 +56,13 @@ namespace task5.Forms
             OrderList orderList = new OrderList();
             orderList.Show();
         }
+
+        private void authPage_Click(object sender, RoutedEventArgs e)
+        {
+
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
     }
 }

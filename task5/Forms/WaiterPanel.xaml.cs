@@ -43,5 +43,12 @@ namespace task5.Forms
             createOrder.Show();
             this.IsEnabled = false;
         }
+
+        private void authPage_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
     }
 }
