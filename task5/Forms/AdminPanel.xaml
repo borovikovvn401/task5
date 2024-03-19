@@ -12,6 +12,11 @@
             <RowDefinition/>
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <TextBox Margin="20,0" Name="tbSearch" Width="150" Height="20" TextChanged="tbSearch_TextChanged"></TextBox>
+            <ComboBox Name="cbSort" Width="150" Height="20" SelectionChanged="cbSort_SelectionChanged"></ComboBox>
+            <ComboBox SelectedItem="CategoryNavigation" DisplayMemberPath="Name" Margin="20,0" Name="cbFiltr" Width="150" Height="20" SelectionChanged="cbFiltr_SelectionChanged"></ComboBox>
+        </StackPanel>
 
         <TextBlock Grid.Row="0" HorizontalAlignment="Right" Name="tbFIO" Text="{Binding Fio}"></TextBlock>
 
@@ -39,7 +44,7 @@
         <StackPanel Grid.Row="2" Orientation="Horizontal">
             <Button Height="40" Width="120" Margin="10,0"  Name="addButton" Click="addButton_Click">Добавить</Button>
             <Button Height="40" Width="120" Name="editButton" Click="editButton_Click">Редактировать</Button>
-            <Button Height="40" Width="120" Margin="10,0"  Name="deleteButton">Удалить</Button>
+            <Button Height="40" Width="120" Margin="10,0"  Name="deleteButton" Click="deleteButton_Click">Удалить</Button>
             <Button Height="40" Width="120" Margin="10,0"  Name="orderListButton" Click="orderListButton_Click">Заказы</Button>
 
             <Button x:Name="authPage" Width="120" Height="40" Margin="10,0" Click="authPage_Click">Выход</Button>

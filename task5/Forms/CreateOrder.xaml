@@ -22,7 +22,10 @@
         </StackPanel>
         <StackPanel Grid.Column="1">
             <Grid>
-                <TextBlock>Список блюд</TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Список блюд</TextBlock>
+                    <TextBlock Margin="20,0" Name="tbOrderPrice" HorizontalAlignment="Right"></TextBlock>
+                </StackPanel>
             </Grid>
             <ListView Name="lvDish">
                 <ListView.ItemTemplate>

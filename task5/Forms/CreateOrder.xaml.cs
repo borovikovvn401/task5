@@ -61,6 +61,18 @@ namespace task5.Forms
         {
             IEnumerable<OderDish> dishes = EfModel.init().OderDishes.Where(p => p.OrderId == order.IdOrder);
             lvDish.ItemsSource = dishes.ToList();
+
+
+            if (order != null)
+            {
+                decimal orderprice = 0;
+                List<OderDish> list1 = EfModel.init().OderDishes.Where(p => p.OrderId == order.IdOrder).ToList();
+                foreach (var item in list1)
+                {
+                    orderprice += item.Dish.Price;
+                }
+                tbOrderPrice.Text = "Стоимость заказа: " + orderprice.ToString() + "руб.";
+            }
         }
 
 

@@ -51,7 +51,7 @@ namespace task5.Forms
                     List<OderDish> list1 = EfModel.init().OderDishes.Where(p => p.OrderId == order.IdOrder).ToList();
                     foreach (var item in list1)
                     {
-                        sb.Append(item.Dish.Name + " x" + item.Amount + "\n");
+                        sb.Append(item.Dish.Name + " x" + item.Amount + "\n" );
 
                     }
                     MessageBox.Show(sb.ToString());

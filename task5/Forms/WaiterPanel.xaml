@@ -12,7 +12,11 @@
             <RowDefinition/>
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
-
+        <StackPanel Orientation="Horizontal">
+            <TextBox Margin="20,0" Name="tbSearch" Width="150" Height="20" TextChanged="tbSearch_TextChanged"></TextBox>
+            <ComboBox Name="cbSort" Width="150" Height="20" SelectionChanged="cbSort_SelectionChanged"></ComboBox>
+            <ComboBox SelectedItem="CategoryNavigation" DisplayMemberPath="Name" Margin="20,0" Name="cbFiltr" Width="150" Height="20" SelectionChanged="cbFiltr_SelectionChanged"></ComboBox>
+        </StackPanel>
         <TextBlock Grid.Row="0" HorizontalAlignment="Right" Name="tbFIO" Text="{Binding Fio}"></TextBlock>
 
         <ListView Grid.Row="1" Name="DishList">
@@ -20,6 +24,7 @@
                 <DataTemplate>
                     <Grid>
                         <StackPanel Orientation="Horizontal">
+                            <Image Width="100" Height="100" Source="{Binding Image, TargetNullValue={StaticResource logo}, FallbackValue={StaticResource logo}}"></Image>
                             <Grid>
                                 <Image></Image>
                                 <StackPanel>

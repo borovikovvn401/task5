@@ -27,12 +27,39 @@ namespace task5.Forms
             this.user = u;
             DataContext = user;
             InitializeComponent();
+
+
+            cbSort.Items.Add("По убыванию цены");
+            cbSort.Items.Add("По возрастанию цены");
+
+            List<Category> categories = EfModel.init().Categories.ToList();
+            categories.Insert(0, new Category { Name = "Все" });
+            cbFiltr.ItemsSource = categories;
+            cbFiltr.SelectedIndex = 0;
+
             update();
         }
 
         public void update()
         {
-            IEnumerable<Dish> dishes = EfModel.init().Dishes.Include(p => p.CategoryNavigation);
+            IEnumerable<Dish> dishes = EfModel.init().Dishes.Include(p => p.CategoryNavigation)
+                .Where(p => p.Name.Contains(tbSearch.Text));
+
+            switch (cbSort.SelectedIndex)
+            {
+                case 0:
+                    dishes = dishes.OrderByDescending(p => p.Price);
+                    break;
+                case 1:
+                    dishes = dishes.OrderBy(p => p.Price);
+                    break;
+            }
+
+            if(cbFiltr.SelectedIndex > 0)
+            {
+                dishes = dishes.Where(p => p.Category == (cbFiltr.SelectedItem as Category).IdCategory);
+            }
+
 
             DishList.ItemsSource = dishes.ToList();
         }
@@ -49,6 +76,21 @@ namespace task5.Forms
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
+        }
+
+        private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            update();
+        }
+
+        private void cbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            update();
+        }
+
+        private void cbFiltr_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            update();
         }
     }
 }
